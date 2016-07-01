@@ -10,7 +10,8 @@ const Storage = require( path.join(__dirname , './app/js/storage.js'));
 
 let dbWindow;
 
-var ngApp = angular.module('mgfire',['ngRoute',"ngMaterial","ngAnimate"]);
+
+var ngApp = angular.module('electmon',['ngRoute',"ngMaterial","ngAnimate"]);
 ngApp.config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('default')
         .primaryPalette('light-green');
@@ -25,7 +26,7 @@ ngApp.controller('mainCtrl',function($scope){
     $scope.port = 80;
     $scope.db_name = "mydb";
     $scope.showlog = false;
-    $scope.log = "No logs";
+    $scope.logs = ["No logs"];
 
     /// methods
     $scope.setup = function(){
@@ -55,7 +56,7 @@ ngApp.controller('mainCtrl',function($scope){
     };
 
     $scope.connect = function(){
-        $scope.log = $scope.log + "\n" + "will connect to " + $scope.ip + ":" + $scope.port;
+        $scope.logs.push("will connect to " + $scope.ip + ":" + $scope.port);
         var db = {name:$scope.db_name,ip:$scope.ip,port:$scope.port};
         if (!dbWindow){
             createDBWindow();

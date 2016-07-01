@@ -14,15 +14,14 @@
   <link rel="stylesheet" href="./app/css/app.css">
 </head>
 
-<body ng-app="mgfire" ng-controller="mainCtrl">
+<body ng-app="electmon" ng-controller="mainCtrl">
       <md-toolbar>
       <div class="md-toolbar-tools" style="-webkit-app-region: drag">
         <h3>ElectMon</h3>
       </div>
     </md-toolbar>
-  <div layout="row" class="section">
-
-    <div flex-gt-sm="80">
+  <div layout="row" class="section" layout-align="center center">
+    <div >
       <div layout="col" layout-align="center">
         <md-input-container>
           <input type="text" ng-model="ip" placeholder="ip"></input>
@@ -44,9 +43,11 @@
     </div>
   </div>
   <md-button aria-label="showlog" ng-click="switchShowlog()"> Show Logs</md-button>
-  <md-content ng-hide="!showlog">
-    <span ng-model="log">{{log}}</span>
-  </md-content>
+  <md-list ng-hide="!showlog" ng-repeat="log in logs">
+    <md-list-item>
+      <span>{{log}}</span>
+    </md-list-item>
+  </md-list>
   <div class="bottom-bar">
     <p>Brought to you by <a href="www.techrd.in">TechRD.in</a></p>
   </div>

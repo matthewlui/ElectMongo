@@ -3,8 +3,15 @@ const electron = require('electron').remote;
 const {ipcRenderer} = require('electron');
 const Mongoose = require('mongoose');
 
-var ngApp = angular.module('mgfire', ['ngRoute', "ngMaterial", "ngAnimate"]);
-
+var ngApp = angular.module('electmon', ['ngRoute', "ngMaterial", "ngAnimate"]);
+ngApp.config(function ($mdThemingProvider) {
+    $mdThemingProvider.theme('default')
+        .primaryPalette('light-green');
+    //  .primaryPalette('pink')
+    //  .accentPalette('orange');
+    $mdThemingProvider.theme('alt-dark')
+        .primaryPalette('blue');
+});
 ngApp.controller('dbCtrl', function ($scope) {
     $scope.db_name = "Connecting";
 
