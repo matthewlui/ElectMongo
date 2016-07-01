@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>MGFire</title>
+  <!-- build:js scripts/vendor.js -->
+  <link rel="stylesheet" type="text/css" href="../bower_components/angular-material/angular-material.css">
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="../bower_components/angular-route/angular-route.js"></script>
+  <script src="../bower_components/angular-animate/angular-animate.js"></script>
+  <script src="../bower_components/angular-aria/angular-aria.js"></script>
+  <script src="../bower_components/angular-material/angular-material.js"></script>
+  <!-- endbuild -->
+  <link rel="stylesheet" href="./app/css/app.css">
+</head>
+
+<body ng-app="mgfire" ng-controller="mainCtrl">
+  <div layout="row">
+    <div flex-gt-sm="80">
+
+      <div layout="col" layout-align="center">
+        <md-input-container>
+          <input type="text" ng-model="ip" placeholder="ip"></input>
+        </md-input-container>
+        <md-input-container>
+          <input type="text" ng-model="port" placeholder="port"></input>
+        </md-input-container>
+        <md-input-container>
+          <input type="text" ng-model="db_name" placeholder="Database Name"></input>
+        </md-input-container>
+        <md-button class="btn btn-default connect" type="button" ng-click="connect()">Connect</md-button>
+      </div>
+
+      <md-content class="app-content" layout="col">
+        <md-content>
+
+        </md-content>
+      </md-content>
+    </div>
+  </div>
+  <md-button aria-label="showlog" ng-click="switchShowlog()"> Show Logs</md-button>
+  <md-content ng-hide="!showlog">
+    <span ng-model="log">{{log}}</span>
+  </md-content>
+  <div class="bottom-bar">
+    <p>Brought to you by <a href="www.techrd.in">TechRD.in</a></p>
+  </div>
+</body>
+
+<footer>
+  <script src="./app/js/app.js"></script>
+</footer>
+
+</html>

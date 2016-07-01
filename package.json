@@ -1,0 +1,34 @@
+{
+  "name": "ElectMon",
+  "version": "0.1",
+  "description": "Free open source cross platform MongoDB console written in Node.js Electron",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:matthewlui/elect-mon.git"
+  },
+  "keywords": [
+    "mongodb",
+    "nodejs",
+    "electron"
+  ],
+  "scripts": {
+    "start": "electron bin/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "electron-prebuilt": "*"
+  },
+  "author": {
+    "name": "Matthew Lui",
+    "email": "matthewluihk@icloud.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "path": "^0.12.7",
+    "request": "^2.72.0",
+    "mongoose": "*"
+  },
+  "homepage": "https://github.com/matthewlui/ElectMon"
+}

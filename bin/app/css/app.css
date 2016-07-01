@@ -1,0 +1,158 @@
+html, body {
+    min-height: 572px;
+    overflow: hidden;
+    margin: 1em;
+    font-family: -apple-system, BlinkMacSystemFont, 'PingFang TC', 'Microsoft YaHei', sans-serif;
+    background-color: #4A90E2;
+}
+
+md-virtual-repeat-container {
+    height: 100%;
+}
+.db-contents{
+    height: 80%;
+}
+.data{
+    background-color: #bbb;
+}
+
+.data-container{
+    height:90%;
+}
+.collections{
+    background-color: #4bb;
+}
+.repeated-item {
+  border-bottom: 0.2em solid #ddd;
+  box-sizing: border-box;
+  padding-top: 10px; 
+}
+
+/*
+    icon
+*/
+.icon {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon-add {
+    width: 16px;
+    height: 16px;
+    background-image: url(../img/icon-add.png);
+    background-size: 16px 16px;
+}
+
+.icon-del {
+    width: 16px;
+    height: 16px;
+    background-image: url(../img/icon-del.png);
+    background-size: 16px 16px;
+}
+
+.icon-setting {
+    width: 16px;
+    height: 16px;
+    background-image: url(../img/icon-setting.png);
+    background-size: 16px 16px;
+}
+
+.icon-log {
+    width: 14px;
+    height: 14px;
+    background-image: url(../img/icon-log-off.png);
+    background-size: 14px 14px;
+}
+
+.icon-log_green {
+    background-image: url(../img/icon-log-on.png);
+    background-size: 14px 14px;
+}
+
+.icon-tips {
+    width: 25px;
+    height: 51px;
+    background-image: url(../img/icon-tips.png);
+    background-size: 25px 51px;
+}
+
+.icon-open {
+    width: 16px;
+    height: 12px;
+    background-image: url(../img/icon-open.png);
+    background-size: 16px 12px;
+}
+
+.icon-finder {
+    width: 24px;
+    height: 24px;
+    background-image: url(../img/icon-finder.png);
+    background-size: 24px 24px;
+}
+
+.icon-finder:hover {
+    background-image: url(../img/icon-location.png);
+}
+
+.icon-info {
+    width: 16px;
+    height: 16px;
+    background-image: url(../img/icon-info.png);
+    background-size: 16px 16px;
+}
+
+.icon-close {
+    width: 20px;
+    height: 20px;
+    background-image: url(../img/icon-close.png);
+    background-size: 20px 20px;
+}
+
+.icon-help {
+    width: 20px;
+    height: 20px;
+    background-image: url(../img/icon-help.png);
+    background-size: 20px 20px;
+}
+
+.icon-clean {
+    width: 15px;
+    height: 15px;
+    background-image: url(../img/icon-clean.png);
+    background-size: 15px 15px;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    background-image: url(../img/logo.png);
+    background-size: 80px 80px;
+    margin: 0 auto;
+
+    opacity: 0;
+    transform: translateY(50px);
+    animation: show ease 1s both;
+}
+
+@keyframes show {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.bottom-bar {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3em;
+    padding : 0.25em;
+    font-size: 0.5em;
+    background-color: #fff;
+}
+
+.bottom-bar p {
+    color: #bbb;
+}

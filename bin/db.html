@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MGFire</title>
+    <!-- build:js scripts/vendor.js -->
+    <link rel="stylesheet" type="text/css" href="../bower_components/angular-material/angular-material.css">
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-route/angular-route.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.js"></script>
+    <script src="../bower_components/angular-aria/angular-aria.js"></script>
+    <script src="../bower_components/angular-material/angular-material.js"></script>
+    <!-- endbuild -->
+    <link rel="stylesheet" href="./app/css/app.css">
+</head>
+
+<body ng-app="mgfire" ng-controller="dbCtrl">
+    <md-content class="data-container" layout="column" layout-padding>
+        <h1>{{db_name}}</h1>
+        <div layout="row" class="db-contents">
+            <md-content class="collections">
+                <md-list>
+                    <md-list-item ng-repeat="collection in collections">
+                        <md-button ng-click="useCollection($index)">{{collection.name}}</md-button>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+            <md-content class="data" flex layout-padding>
+                <md-virtual-repeat-container id="vertical-container">
+                    <div md-virtual-repeat="doc in docLoader" md-on-demand flex class="repeated-item">
+                        <p>{{doc}}</p>
+                    </div>
+                </md-virtual-repeat-container>
+            </md-content>
+        </div>
+
+        
+        <md-content ng-model="log">
+            <md-list ng-repeat="log in logs">
+                <md-list-item>
+                    <p>{{ log }}</p>
+                </md-list-item>
+            </md-list>
+        </md-content>
+        <md-content layout="row">
+            <md-input-container>
+                <input ng-model="commandBox">
+            </md-input-container>
+            <md-button ng-click="execCommand()">Exec</md-button>
+        </md-content>
+    </md-content>
+
+    <div class="bottom-bar">
+
+    </div>
+
+</body>
+
+<footer>
+    <script src="./app/js/db.js"></script>
+</footer>
+
+</html>
