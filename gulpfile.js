@@ -5,7 +5,7 @@ electron = require('electron-prebuilt');
 var ele; //keep an instance for kill;
 
 gulp.task('run',function(){
-    ele = childProcess.spawn(electron,['--debug-5858','./bin/main'],{stdio:'inherit'});
+    ele = childProcess.spawn(electron,['--debug-5858','./src/main'],{stdio:'inherit'});
 });
 
 gulp.task('reload',function(){
@@ -16,7 +16,7 @@ gulp.task('reload',function(){
 });
 
 gulp.task('watch',function(){
-    gulp.watch('bin/db/*',['reload','run']);
-    gulp.watch('bin/app/js/*',['reload','run']);
-    gulp.watch('bin/main.js',['reload','run']);
+    gulp.watch('src/db/*',['reload','run']);
+    gulp.watch('src/app/js/*',['reload','run']);
+    gulp.watch('src/main.js',['reload','run']);
 });
