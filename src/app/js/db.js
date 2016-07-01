@@ -67,24 +67,22 @@ ngApp.controller('dbCtrl', function ($scope) {
 
 });
 
-    var DocLoader = function () {
-        this.loadedPages = {};
-        /** @type {number} Total number of items. */
-        this.numItems = 0;
-        /** @const {number} Number of items to fetch per request. */
-        this.PAGE_SIZE = 50;
-    };
+var DocLoader = function () {
+    this.loadedPages = {};
+    this.numItems = 0;
+    this.PAGE_SIZE = 50;
+};
 
-    DocLoader.prototype.config = function (collection) {
-        this.collection = collection;
-    };
+DocLoader.prototype.config = function (collection) {
+    this.collection = collection;
+};
 
-    DocLoader.prototype.getItemAtIndex = function (index) {
-        return this.collection[index];
-    };
-    DocLoader.prototype.getLength = function () {
-        if (!this.collection){
-            return 0;
-        }
-        return this.collection.length;
-    };
+DocLoader.prototype.getItemAtIndex = function (index) {
+    return this.collection[index];
+};
+DocLoader.prototype.getLength = function () {
+    if (!this.collection) {
+        return 0;
+    }
+    return this.collection.length;
+};

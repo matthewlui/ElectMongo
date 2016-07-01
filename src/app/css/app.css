@@ -6,6 +6,10 @@ html, body {
     background-color: #4A90E2;
 }
 
+.radius {
+    border-radius: 4px;
+}
+
 md-virtual-repeat-container {
     height: 100%;
 }
@@ -13,7 +17,7 @@ md-virtual-repeat-container {
     height: 80%;
 }
 .data{
-    background-color: #bbb;
+    background-color: #eee;
 }
 
 .data-container{

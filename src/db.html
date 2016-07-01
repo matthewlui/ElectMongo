@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>MGFire</title>
+    <title>ElectMon-DBConnect</title>
     <!-- build:js scripts/vendor.js -->
     <link rel="stylesheet" type="text/css" href="../bower_components/angular-material/angular-material.css">
     <script src="../bower_components/angular/angular.js"></script>
@@ -15,9 +15,14 @@
 </head>
 
 <body ng-app="mgfire" ng-controller="dbCtrl">
-    <md-content class="data-container" layout="column" layout-padding>
-        <h1>{{db_name}}</h1>
-        <div layout="row" class="db-contents">
+
+    <md-content class="data-container radius" layout="column" md-whiteframe="5">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h1>{{db_name}}</h1>
+            </div>
+        </md-toolbar>
+        <div layout="row" class="db-contents" layout-padding>
             <md-content class="collections">
                 <md-list>
                     <md-list-item ng-repeat="collection in collections">
@@ -34,7 +39,7 @@
             </md-content>
         </div>
 
-        
+
         <md-content ng-model="log">
             <md-list ng-repeat="log in logs">
                 <md-list-item>

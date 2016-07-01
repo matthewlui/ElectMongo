@@ -26,9 +26,6 @@ ngApp.controller('mainCtrl',function($scope){
             $scope.setting = storage.load("setting");
             $scope.config();
         });
-        Request("https://www.chatboy.xyz/log",function(err,res,body){
-            $scope.log = body;
-        });
     };
     
     $scope.config = function(){
@@ -75,33 +72,3 @@ function createDBWindow(){
         dbWindow = null;
     });
 }
-
-var storage;
-var setting;
-var defualtFile;
-
-function config(setting){
-    var defaultFileName = setting.default;
-    if (!defaultFileName){
-        return;
-    }
-    var doc = storage.load(defaultFileName);
-    var ip = doc.ip;
-    var port = doc.port;
-    var username = doc.username;
-    var password = doc.password;
-    if (ip&&port) {
-        if (username){
-            if (password){
-
-            }
-        }
-    }
-}
-
-function connect(){
-
-}
-
-
-
