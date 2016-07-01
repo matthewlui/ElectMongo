@@ -1,6 +1,6 @@
 {
   "name": "ElectMon",
-  "version": "0.1",
+  "version": "0.1.0",
   "description": "Free open source cross platform MongoDB console written in Node.js Electron",
   "main": "main.js",
   "repository": {
@@ -14,11 +14,13 @@
   ],
   "scripts": {
     "start": "electron bin/main.js",
+    "build": "electron-packager ./ ElectMon --all --version 1.2.5 --out ./bin --overwrite",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "electron-prebuilt": "*"
+    "electron-packager": "^7.1.0",
+    "electron-prebuilt": "*",
+    "gulp": "^3.9.1"
   },
   "author": {
     "name": "Matthew Lui",

@@ -2,3 +2,5 @@ node_modules
 bower_components
 data
 .vscode
+bin
+npm-debug.log
