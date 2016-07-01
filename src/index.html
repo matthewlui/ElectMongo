@@ -15,41 +15,33 @@
 </head>
 
 <body ng-app="electmon" ng-controller="mainCtrl">
-      <md-toolbar>
-      <div class="md-toolbar-tools" style="-webkit-app-region: drag">
-        <h3>ElectMon</h3>
-      </div>
-    </md-toolbar>
-  <div layout="row" class="section" layout-align="center center">
-    <div >
-      <div layout="col" layout-align="center">
-        <md-input-container>
-          <input type="text" ng-model="ip" placeholder="ip"></input>
-        </md-input-container>
-        <md-input-container>
-          <input type="text" ng-model="port" placeholder="port"></input>
-        </md-input-container>
-        <md-input-container>
-          <input type="text" ng-model="db_name" placeholder="Database Name"></input>
-        </md-input-container>
-        <md-button class="btn btn-default connect" type="button" ng-click="connect()">Connect</md-button>
-      </div>
-
-      <md-content class="app-content" layout="col">
-        <md-content>
-
-        </md-content>
-      </md-content>
+  <md-toolbar>
+    <div class="md-toolbar-tools" style="-webkit-app-region: drag" layout="row" layout-align="center">
+      <h3>ElectMon</h3>
     </div>
-  </div>
-  <md-button aria-label="showlog" ng-click="switchShowlog()"> Show Logs</md-button>
-  <md-list ng-hide="!showlog" ng-repeat="log in logs">
-    <md-list-item>
-      <span>{{log}}</span>
-    </md-list-item>
-  </md-list>
-  <div class="bottom-bar">
-    <p>Brought to you by <a href="www.techrd.in">TechRD.in</a></p>
+  </md-toolbar>
+  <div layout="column" class="section" layout-align="center none">
+    <div layout-xs="column" layout-gt-xs="row" layout-align="center start" layout-margin>
+      <md-input-container flex>
+        <input type="text" ng-model="ip" placeholder="ip"></input>
+      </md-input-container>
+      <md-input-container flex>
+        <input type="text" ng-model="port" placeholder="port"></input>
+      </md-input-container>
+      <md-input-container flex>
+        <input type="text" ng-model="db_name" placeholder="Database Name"></input>
+      </md-input-container>
+      <md-button class="btn btn-default connect" type="button" ng-click="connect()" flex>Connect</md-button>
+    </div>
+    <md-switch aria-label="showlog" ng-click="switchShowlog()"> Show Logs</md-switch>
+    <md-list ng-hide="!showlog" ng-repeat="log in logs">
+      <md-list-item>
+        <span>{{log}}</span>
+      </md-list-item>
+    </md-list>
+    <div class="bottom-bar" layout="row" layout-align="end">
+      <p>Create by <a href="www.techrd.in">TechRD.in</a></p>
+    </div>
   </div>
 </body>
 

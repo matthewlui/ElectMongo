@@ -16,13 +16,13 @@
 
 <body ng-app="electmon" ng-controller="dbCtrl">
     <md-toolbar>
-        <div class="md-toolbar-tools" style="-webkit-app-region: drag">
+        <div class="md-toolbar-tools" style="-webkit-app-region: drag" layout="row" layout-align="center">
             <h3>{{db_name}}</h3>
         </div>
     </md-toolbar>
     <md-content class="data-container radius" layout="column" md-whiteframe="5">
-        <div layout="row" class="db-contents" layout-padding>
-            <md-content class="collections">
+        <div layout-gt-xs="row" layout-xs="column" class="db-contents" layout-padding>
+            <md-content class="collections radius">
                 <md-list>
                     <md-list-item ng-repeat="collection in collections">
                         <md-button ng-click="useCollection($index)">{{collection.name}}</md-button>
@@ -37,16 +37,14 @@
                 </md-virtual-repeat-container>
             </md-content>
         </div>
-
-
-        <md-content ng-model="log">
+        <md-content flex ng-model="log">
             <md-list ng-repeat="log in logs">
                 <md-list-item>
                     <p>{{ log }}</p>
                 </md-list-item>
             </md-list>
         </md-content>
-        <md-content layout="row">
+        <md-content layout="row" >
             <md-input-container>
                 <input ng-model="commandBox">
             </md-input-container>
@@ -54,8 +52,8 @@
         </md-content>
     </md-content>
 
-    <div class="bottom-bar">
-
+    <div class="bottom-bar" layout="row" layout-align="end">
+        <p>Create by <a href="www.techrd.in" >TechRD.in</a></p>
     </div>
 
 </body>

@@ -68,7 +68,6 @@ ngApp.controller('dbCtrl', function ($scope) {
         var db = $scope.db;
         var mg = Mongoose;
         var re = eval(cmd);
-
         $scope.logs.push(re);
     };
 
