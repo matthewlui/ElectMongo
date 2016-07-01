@@ -5,7 +5,7 @@
   "main": "main.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:matthewlui/elect-mon.git"
+    "url": "git@github.com:matthewlui/ElectMon.git"
   },
   "keywords": [
     "mongodb",
