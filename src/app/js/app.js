@@ -11,6 +11,14 @@ const Storage = require( path.join(__dirname , './app/js/storage.js'));
 let dbWindow;
 
 var ngApp = angular.module('mgfire',['ngRoute',"ngMaterial","ngAnimate"]);
+ngApp.config(function ($mdThemingProvider) {
+    $mdThemingProvider.theme('default')
+        .primaryPalette('light-green');
+    //  .primaryPalette('pink')
+    //  .accentPalette('orange');
+    $mdThemingProvider.theme('alt-dark')
+        .primaryPalette('blue');
+});
 ngApp.controller('mainCtrl',function($scope){
     
     $scope.ip = "127.0.0.1";
@@ -19,6 +27,7 @@ ngApp.controller('mainCtrl',function($scope){
     $scope.showlog = false;
     $scope.log = "No logs";
 
+    /// methods
     $scope.setup = function(){
         var storage = new Storage();
         $scope.storage = storage;
@@ -66,7 +75,7 @@ ngApp.controller('mainCtrl',function($scope){
 });
 
 function createDBWindow(){
-    dbWindow = new BrowserWindow({width:800,height:600});
+    dbWindow = new BrowserWindow({width:800,height:600,titleBarStyle:'hidden'});
     dbWindow.loadURL('file://'+__dirname+"/db.html");
     dbWindow.on('closed',function(){
         dbWindow = null;

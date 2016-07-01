@@ -1,27 +1,36 @@
 html, body {
     min-height: 572px;
     overflow: hidden;
-    margin: 1em;
     font-family: -apple-system, BlinkMacSystemFont, 'PingFang TC', 'Microsoft YaHei', sans-serif;
-    background-color: #4A90E2;
+    background-color: #eee;
+}
+
+.section{
+    padding:1em;
 }
 
 .radius {
     border-radius: 4px;
 }
 
+.md-toolbar-tools h3 {
+    margin-top: 1em; 
+    color:white;
+    -webkit-user-select: none;
+}
+
 md-virtual-repeat-container {
     height: 100%;
 }
 .db-contents{
-    height: 80%;
+    height: 100%;
 }
 .data{
     background-color: #eee;
 }
 
 .data-container{
-    height:90%;
+    height:100%;
 }
 .collections{
     background-color: #4bb;

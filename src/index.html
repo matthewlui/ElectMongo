@@ -15,9 +15,14 @@
 </head>
 
 <body ng-app="mgfire" ng-controller="mainCtrl">
-  <div layout="row">
-    <div flex-gt-sm="80">
+      <md-toolbar>
+      <div class="md-toolbar-tools" style="-webkit-app-region: drag">
+        <h3>ElectMon</h3>
+      </div>
+    </md-toolbar>
+  <div layout="row" class="section">
 
+    <div flex-gt-sm="80">
       <div layout="col" layout-align="center">
         <md-input-container>
           <input type="text" ng-model="ip" placeholder="ip"></input>
