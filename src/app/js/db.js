@@ -22,32 +22,38 @@ ngApp.config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('alt-dark')
         .primaryPalette('blue');
 });
+
 ngApp.controller('dbCtrl', function ($scope) {
+
     $scope.db_name = "Connecting";
     $scope.docLoader = new DocLoader();
-
+    $scope.collections = [];
+    $scope.logs = [];
+    $scope.commandBox = "";
+    $scope.selectedRow = 0;
+    $scope.selectedCol = 0;
     ipcRenderer.on('db-connect', function (event, data) {
         if (!data) return;
-            var mongoUrl = "mongodb://";
-            mongoUrl = data.username ? `${mongoUrl}${data.username}` : mongoUrl;
-            mongoUrl = data.password ? `${mongoUrl}:${data.password}` : mongoUrl ;
-            if (mongoUrl === "mongodb://"){
-                mongoUrl = data.ip ? mongoUrl + data.ip : mongoUrl;
-            }else{
-                mongoUrl = data.ip ? `${mongoUrl}@${data.ip}` : mongoUrl;
-            }
-            mongoUrl = data.port ? `${mongoUrl}:${data.port}` : mongoUrl;
-            mongoUrl = data.name ? `${mongoUrl}/${data.name}` : mongoUrl;
-            $scope.db = data;
-            try {
-                $scope.db.connection = Mongoose.createConnection(mongoUrl, function () {
-                    $scope.config();
-                });
-            } catch (err) {
-                console.log(err);
-            }
+        var mongoUrl = "mongodb://";
+        mongoUrl = data.username ? `${mongoUrl}${data.username}` : mongoUrl;
+        mongoUrl = data.password ? `${mongoUrl}:${data.password}` : mongoUrl;
+        if (mongoUrl === "mongodb://") {
+            mongoUrl = data.ip ? mongoUrl + data.ip : mongoUrl;
+        } else {
+            mongoUrl = data.ip ? `${mongoUrl}@${data.ip}` : mongoUrl;
+        }
+        mongoUrl = data.port ? `${mongoUrl}:${data.port}` : mongoUrl;
+        mongoUrl = data.name ? `${mongoUrl}/${data.name}` : mongoUrl;
+        $scope.db = data;
+        try {
+            $scope.db.connection = Mongoose.createConnection(mongoUrl, function () {
+                $scope.config();
+            });
+        } catch (err) {
+            console.log(err);
+        }
     });
-    $scope.collections = [];
+
     $scope.config = function () {
         var db = $scope.db;
         var mgdb = Mongoose.connection.db;
@@ -69,20 +75,19 @@ ngApp.controller('dbCtrl', function ($scope) {
 
     $scope.useCollection = function (index) {
         var collection = $scope.collections[index];
-        var cl = $scope.db.connection.db.collection(collection.name);
-        cl.find({}, function (err, docs) {
+        $scope.collection = $scope.db.connection.db.collection(collection.name);
+        $scope.collection.find({}, function (err, docs) {
             docs.toArray().then(function (d) {
                 $scope.$apply(function () {
+                    $scope.keys = keysLister(d);
                     $scope.docLoader = new DocLoader();
                     $scope.docLoader.config(d);
-                    $scope.collection = d;
+                    
                 });
             });
         });
     };
 
-    $scope.logs = [];
-    $scope.commandBox = "";
     $scope.execCommand = function () {
         var cmd = $scope.commandBox;
         var db = $scope.db;
@@ -90,7 +95,26 @@ ngApp.controller('dbCtrl', function ($scope) {
         var re = eval(cmd);
         $scope.logs.push(re);
     };
-
+    $scope.use = function(index,key){
+        $scope.edited();
+        var doc = $scope.docLoader.getItemAtIndex(index);
+        $scope.edit = {doc:doc,key:key,index:index};
+    };
+    $scope.edited = function(){
+        if (!$scope.edit) return;
+        var collection = $scope.collection;
+        var doc = $scope.edit.doc;
+        collection.update($scope.edit.doc,function(err,doc){
+            console.log("updated",err,doc);
+        });
+        /** @todo save update of edited model */
+    };
+    $scope.selectRow = function(row){
+        $scope.selectedRow = row;
+    }
+    $scope.selectCol = function(col){
+        $scope.selectedCol = col;
+    }
 });
 
 var DocLoader = function () {
@@ -113,3 +137,11 @@ DocLoader.prototype.getLength = function () {
     }
     return this.collection.length;
 };
+
+function keysLister(docs){
+    var keysSet = new Set();
+    for ( var index in docs){
+        Object.keys(docs[index]).forEach(key=>keysSet.add(key));
+    }
+    return [...keysSet];
+}

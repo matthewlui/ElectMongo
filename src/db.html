@@ -29,15 +29,27 @@
                     </md-list-item>
                 </md-list>
             </md-content>
-            <md-content class="data" flex layout-padding>
-                <md-content ng-hide="collection" class="radius">
-                    <h1> < Pick a collection to show.</h1>
-                </md-content>
-                <md-virtual-repeat-container id="vertical-container">
-                    <div md-virtual-repeat="doc in docLoader" md-on-demand flex class="repeated-item">
-                        <p>{{doc}}</p>
-                    </div>
-                </md-virtual-repeat-container>
+
+            <md-content flex="80" class="data">
+                <h6 ng-hide="collection"> < Pick a collection to show. </h6>
+                <md-list layout="row" style="width:{{keys.length*10}}em" layout-align="start start">
+                    <md-subheader ng-repeat="key in keys" style="width:25%">{{key}}</md-subheader>
+                </md-list>
+                <md-divider></md-divider>
+                <md-list style="height:80%;width:{{keys.length*10}}em;margin:0px;padding:0px;border: 0.5px solid #bbb;">
+                    <md-virtual-repeat-container id="vertical-container" style="height:100%;width:100%;padding:0px;margin:0px">
+                        <md-list-item md-virtual-repeat="doc in docLoader" md-on-demand class="repeated-item" style="width:100%;padding:0px;margin:0px">
+                            <md-list layout="row" layout-align="start center" sytle="margin:0px;padding:0px !important" >
+                                <md-list-item class="cell" ng-repeat="key in keys" ng-click="use($parent.$index,key)" style="width:10em;height:3em;margin:0px;padding:0px">
+                                    <md-content class="md-list-item-text cell-data" style="width:100%;height:100%;padding:0px;margin:0px" layout-align="center start">
+                                        <p ng-hide="edit.doc === doc && edit.key === key" style="padding-left:0.2em" ng-click=""> {{doc[key]}} </p> <!-- @todo try to add display() to wrap text -->
+                                        <textarea ng-hide="edit.doc !== doc || edit.key !== key" ng-model="doc[key]"></textarea>
+                                    </md-content>
+                                </md-list-item>
+                            </md-list>
+                        </md-list-item>
+                    </md-virtual-repeat-container>
+                </md-list>
             </md-content>
         </div>
         <md-content flex ng-model="log">
@@ -47,7 +59,7 @@
                 </md-list-item>
             </md-list>
         </md-content>
-        <md-content layout="row" >
+        <md-content layout="row">
             <md-input-container>
                 <input ng-model="commandBox">
             </md-input-container>
@@ -56,7 +68,7 @@
     </md-content>
 
     <div class="bottom-bar" layout="row" layout-align="end">
-        <p>Create by <a href="www.techrd.in" >TechRD.in</a></p>
+        <p>Create by <a href="www.techrd.in">TechRD.in</a></p>
     </div>
 
 </body>

@@ -5,6 +5,10 @@ html, body {
     background-color: #eee;
 }
 
+.col{
+    width : 50px;
+}
+
 .section{
     padding:2em;
 }
@@ -13,10 +17,24 @@ html, body {
     border-radius: 4px;
 }
 
+.data md-list md-list-item {
+    margin: 0px;
+    padding: 0px;
+    background-color: transparent;
+}
+
+.list-container{
+    height: 80%;
+}
+
 .md-toolbar-tools h3 {
     margin: auto; 
     color:white;
     -webkit-user-select: none;
+}
+
+data .md-virtual-repeat-scroller{
+    overflow-x:scroll !important;
 }
 
 .md-toolbar-tools a {
@@ -37,16 +55,33 @@ md-virtual-repeat-container {
     background-color: #eee;
 }
 
+.data md-list {
+    padding:0px !important;
+}
 .data-container{
     height:90%;
 }
+
+md-list-item md-content{
+    overflow: hidden;
+}
+
 .collections{
     background-color: #4bb;
 }
+
+.cell{
+    border-right: 0.2px dashed #bbb;
+    border-bottom: 0.2px dashed #bbb;
+}
+
+.cell:focus {
+    width:10em;
+    height:10em !important;
+}
+
 .repeated-item {
-  border-bottom: 0.2em solid #ddd;
   box-sizing: border-box;
-  padding-top: 10px; 
 }
 
 /*
