@@ -14,7 +14,7 @@ html, body {
 }
 
 .md-toolbar-tools h3 {
-    margin: 0.5em; 
+    margin: auto; 
     color:white;
     -webkit-user-select: none;
 }

@@ -1,3 +1,13 @@
+/**
+ * @module mainCtrl
+ * 
+ * Entrance of app. Manage user infomation, start a connection
+ * 
+ * @todo support multiple connection by creating dbWindows as an Array 
+ * to hold different connection window and change connect button to save,
+ * move connect to eact datagrid
+ */
+
 'use strict';
 
 const electron = require('electron').remote;
@@ -63,7 +73,7 @@ ngApp.controller('mainCtrl',function($scope){
         }
         /// Trigger event of dbWindow to connect after the js context are loaded.
         dbWindow.webContents.on('did-finish-load',function(){
-            dbWindow.webContents.send('db-connect',{name:$scope.db_name,ip:$scope.ip,port:$scope.port});
+            dbWindow.webContents.send('db-connect',{name:$scope.db_name,ip:$scope.ip,port:$scope.port,username:$scope.username,password:$scope.password});
         });
         $scope.saveSetting(db);
     };

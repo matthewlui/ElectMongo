@@ -21,19 +21,30 @@
     </div>
   </md-toolbar>
   <div layout="column" class="section" layout-align="center none">
-    <div layout-xs="column" layout-gt-xs="row" layout-align="center start" layout-margin>
-      <md-input-container flex>
-        <input type="text" ng-model="ip" placeholder="ip"></input>
+    <div layout-xs="column" layout-align="center start" layout-margin>
+      <div layout="row">
+       <md-input-container flex>
+        <input type="text" ng-model="ip" placeholder="IP"></input>
+      </md-input-container>
+      <md-input-container flex="10">
+        <input type="text" ng-model="port" placeholder="Port"></input>
+      </md-input-container>
+            <md-input-container flex>
+        <input type="text" ng-model="db_name" placeholder="DB Name"></input>
+      </md-input-container>
+      </div>
+      <div layout="row">
+        <md-input-container flex>
+        <input type="text" ng-model="username" placeholder="Username(optional)"></input>
       </md-input-container>
       <md-input-container flex>
-        <input type="text" ng-model="port" placeholder="port"></input>
+        <input type="text" ng-model="password" placeholder="Password(optional)"></input>
       </md-input-container>
-      <md-input-container flex>
-        <input type="text" ng-model="db_name" placeholder="Database Name"></input>
-      </md-input-container>
-      <md-button class="btn btn-default connect" type="button" ng-click="connect()" flex>Connect</md-button>
+      </div>
+
+      <md-button class="md-raised md-warn connect" type="button" ng-click="connect()" flex>Connect</md-button>
     </div>
-    <md-switch aria-label="showlog" ng-click="switchShowlog()"> Show Logs</md-switch>
+    <md-switch class="md-primary" aria-label="showlog" ng-click="switchShowlog()">Logs</md-switch>
     <md-list ng-hide="!showlog" ng-repeat="log in logs">
       <md-list-item>
         <span>{{log}}</span>
