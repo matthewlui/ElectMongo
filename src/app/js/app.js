@@ -21,7 +21,7 @@ const Storage = require( path.join(__dirname , './app/js/storage.js'));
 let dbWindow;
 
 
-var ngApp = angular.module('electmon',['ngRoute',"ngMaterial","ngAnimate"]);
+var ngApp = angular.module('electmongo',['ngRoute',"ngMaterial","ngAnimate"]);
 ngApp.config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('default')
         .primaryPalette('light-green');

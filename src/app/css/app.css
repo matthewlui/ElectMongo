@@ -19,6 +19,13 @@ html, body {
     -webkit-user-select: none;
 }
 
+.md-toolbar-tools a {
+    margin: auto; 
+    color:#eee;
+    font-size : 8px;
+    -webkit-user-select: none;
+}
+
 md-virtual-repeat-container {
     height: 100%;
 }
