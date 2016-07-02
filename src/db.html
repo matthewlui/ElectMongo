@@ -30,6 +30,9 @@
                 </md-list>
             </md-content>
             <md-content class="data" flex layout-padding>
+                <md-content ng-hide="collection" class="radius">
+                    <h1> < Pick a collection to show.</h1>
+                </md-content>
                 <md-virtual-repeat-container id="vertical-container">
                     <div md-virtual-repeat="doc in docLoader" md-on-demand flex class="repeated-item">
                         <p>{{doc}}</p>

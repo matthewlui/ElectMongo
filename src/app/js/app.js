@@ -61,6 +61,7 @@ ngApp.controller('mainCtrl',function($scope){
         if (!dbWindow){
             createDBWindow();
         }
+        /// Trigger event of dbWindow to connect after the js context are loaded.
         dbWindow.webContents.on('did-finish-load',function(){
             dbWindow.webContents.send('db-connect',{name:$scope.db_name,ip:$scope.ip,port:$scope.port});
         });
@@ -75,6 +76,8 @@ ngApp.controller('mainCtrl',function($scope){
     $scope.setup();
 });
 
+///Convenient mehtod to construct window.
+///@todo centralize this method when main.js has exact the same;
 function createDBWindow(){
     dbWindow = new BrowserWindow({width:800,height:600,titleBarStyle:'hidden'});
     dbWindow.loadURL('file://'+__dirname+"/db.html");

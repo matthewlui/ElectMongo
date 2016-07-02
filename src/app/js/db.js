@@ -1,3 +1,11 @@
+/**
+ * @module db
+ * 
+ * @todo: add each count on collections list.
+ * @todo: add loading indicator when loading data.
+ * @todo: add dragging target to eval.
+ */
+
 'use strict';
 const electron = require('electron').remote;
 const {ipcRenderer} = require('electron');
@@ -14,19 +22,28 @@ ngApp.config(function ($mdThemingProvider) {
 });
 ngApp.controller('dbCtrl', function ($scope) {
     $scope.db_name = "Connecting";
-
     $scope.docLoader = new DocLoader();
+
     ipcRenderer.on('db-connect', function (event, data) {
-        if (data) {
+        if (!data) return;
+            var mongoUrl = "mongodb://";
+            mongoUrl = data.username ? `${mongoUrl}${data.username}` : mongoUrl;
+            mongoUrl = data.password ? `${mongoUrl}:${data.password}` : mongoUrl ;
+            if (mongoUrl === "mongodb://"){
+                mongoUrl = data.ip ? mongoUrl + data.ip : mongoUrl;
+            }else{
+                mongoUrl = data.ip ? `${mongoUrl}@${data.ip}` : mongoUrl;
+            }
+            mongoUrl = data.port ? `${mongoUrl}:${data.port}` : mongoUrl;
+            mongoUrl = data.name ? `${mongoUrl}/${data.name}` : mongoUrl;
             $scope.db = data;
             try {
-                $scope.db.connection = Mongoose.createConnection('mongodb://' + data.ip + ':' + data.port + '/' + data.name, function () {
+                $scope.db.connection = Mongoose.createConnection(mongoUrl, function () {
                     $scope.config();
                 });
             } catch (err) {
                 console.log(err);
             }
-        }
     });
     $scope.collections = [];
     $scope.config = function () {
@@ -61,6 +78,7 @@ ngApp.controller('dbCtrl', function ($scope) {
             });
         });
     };
+
     $scope.logs = [];
     $scope.commandBox = "";
     $scope.execCommand = function () {
@@ -86,6 +104,7 @@ DocLoader.prototype.config = function (collection) {
 DocLoader.prototype.getItemAtIndex = function (index) {
     return this.collection[index];
 };
+
 DocLoader.prototype.getLength = function () {
     if (!this.collection) {
         return 0;
