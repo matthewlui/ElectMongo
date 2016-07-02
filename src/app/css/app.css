@@ -23,6 +23,11 @@ html, body {
     background-color: transparent;
 }
 
+.data md-list-item .md-no-style{
+    margin:0px;
+    padding:0px !important;
+}
+
 .list-container{
     height: 80%;
 }

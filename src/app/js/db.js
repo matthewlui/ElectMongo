@@ -104,23 +104,21 @@ ngApp.controller('dbCtrl', function ($scope) {
         if (!$scope.edit) return;
         var collection = $scope.collection;
         var doc = $scope.edit.doc;
-        collection.update($scope.edit.doc,function(err,doc){
+        collection.updateOne({_id:doc._id},doc,function(err,doc){
             console.log("updated",err,doc);
         });
         /** @todo save update of edited model */
     };
-    $scope.selectRow = function(row){
-        $scope.selectedRow = row;
-    }
-    $scope.selectCol = function(col){
-        $scope.selectedCol = col;
-    }
+
 });
 
+/** @constructor
+ *  
+ *  Object that conform to md-virtual-repeat requirement.
+ *  @property collection {Array.Object}  
+ */
 var DocLoader = function () {
-    this.loadedPages = {};
-    this.numItems = 0;
-    this.PAGE_SIZE = 50;
+
 };
 
 DocLoader.prototype.config = function (collection) {
@@ -136,6 +134,11 @@ DocLoader.prototype.getLength = function () {
         return 0;
     }
     return this.collection.length;
+};
+
+/** @todo */
+DocLoader.prototype.orderBy = function(key){
+
 };
 
 function keysLister(docs){

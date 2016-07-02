@@ -36,6 +36,7 @@
                     <md-subheader ng-repeat="key in keys" style="width:25%">{{key}}</md-subheader>
                 </md-list>
                 <md-divider></md-divider>
+                <!--Table of datas @todo put style into css -->
                 <md-list style="height:80%;width:{{keys.length*10}}em;margin:0px;padding:0px;border: 0.5px solid #bbb;">
                     <md-virtual-repeat-container id="vertical-container" style="height:100%;width:100%;padding:0px;margin:0px">
                         <md-list-item md-virtual-repeat="doc in docLoader" md-on-demand class="repeated-item" style="width:100%;padding:0px;margin:0px">
@@ -50,6 +51,7 @@
                         </md-list-item>
                     </md-virtual-repeat-container>
                 </md-list>
+                <!-- End Table of datas-->
             </md-content>
         </div>
         <md-content flex ng-model="log">
