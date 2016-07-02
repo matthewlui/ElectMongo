@@ -1,9 +1,9 @@
 /**
  * @module db
  * 
- * @todo: add each count on collections list.
- * @todo: add loading indicator when loading data.
- * @todo: add dragging target to eval.
+ * @todo add each count on collections list.
+ * @todo add loading indicator when loading data.
+ * @todo add dragging target to eval.
  */
 
 'use strict';

@@ -13,7 +13,7 @@ class Storage {
         this.lock = true;
         this.data = {};
     }
-
+    /**  write doc to disk */
     save() {
         var self = this;
         console.log(self.data);
@@ -42,15 +42,26 @@ class Storage {
         });
     }
 
+    /** load doc with name */
     load(doc) {
         return this.data[doc];
     }
 
+    /** update edited doc 
+     * @param docNam {String} 
+     * @param doc {json} 
+    */
     edited(doc, file) {
         this.data[doc] = file;
         this.save();
     }
 
+    /**
+     * Safely entrance point of using storage.
+     * Will prepare the envoriment for performing io.
+     * @throws 
+     * @return {Promise(this)}
+     */
     ready() {
         var self = this;
         return new Promise(function (resolve, reject) {
@@ -77,7 +88,6 @@ class Storage {
             });
         });
     }
-
 }
 
 module.exports = Storage;

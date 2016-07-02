@@ -1,7 +1,7 @@
 /**
  * @module mainCtrl
  * 
- * Entrance of app. Manage user infomation, start a connection
+ * @description Entrance of app. Manage user infomation, start a connection
  * 
  * @todo support multiple connection by creating dbWindows as an Array 
  * to hold different connection window and change connect button to save,
