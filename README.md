@@ -36,10 +36,12 @@ After build, go to the ./bin folder and choose platform you build then exec!
 
 * 0.1.* : 
     
-    * CRUD of Documents and Collections
     * User Guide
     * Test Code
+    * Add collection
     * Add document "field"
+    * Remove document
+    * Add document
 
         ***CURRENT***
 
@@ -58,8 +60,9 @@ After build, go to the ./bin folder and choose platform you build then exec!
 ### Discussion :
 
 * 0.1 
-    * How we see?
+    * How we deal with?
         * MongoDB is a document base database, should we use a document editor or a schema format to represent and edit the datas?
+
 
 license : MIT
 ```
