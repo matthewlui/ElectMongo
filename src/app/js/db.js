@@ -1,6 +1,8 @@
 /**
  * @module db
  * 
+ * @description Angular controller, db data management interface
+ * 
  * @todo add each count on collections list.
  * @todo add loading indicator when loading data.
  * @todo add dragging target to eval.
@@ -80,9 +82,7 @@ ngApp.controller('dbCtrl', function ($scope) {
             docs.toArray().then(function (d) {
                 $scope.$apply(function () {
                     $scope.keys = keysLister(d);
-                    $scope.docLoader = new DocLoader();
-                    $scope.docLoader.config(d);
-                    
+                    $scope.docLoader = new DocLoader(d);
                 });
             });
         });
@@ -112,23 +112,28 @@ ngApp.controller('dbCtrl', function ($scope) {
 
 });
 
-/** @constructor
+/** 
+ *  @constructor DocLoader
  *  
- *  Object that conform to md-virtual-repeat requirement.
- *  @property collection {Array.Object}  
+ *  @description Object that conform to md-virtual-repeat requirement.
+ *  @param collection {Array.Object}
+ *   
  */
-var DocLoader = function () {
-
-};
-
-DocLoader.prototype.config = function (collection) {
+var DocLoader = function (collection) {
     this.collection = collection;
 };
 
+
+/**
+ * @param  {Number} index 
+ * @return {Object} object of collection
+ */
 DocLoader.prototype.getItemAtIndex = function (index) {
     return this.collection[index];
 };
-
+/**
+ * @return {number} length of collection.
+ */
 DocLoader.prototype.getLength = function () {
     if (!this.collection) {
         return 0;
@@ -141,6 +146,10 @@ DocLoader.prototype.orderBy = function(key){
 
 };
 
+/** 
+ * @param {Array.Object} docs Array of mongoDb document
+ * @returns {Array.String} Individual keys that all object contains 
+ */
 function keysLister(docs){
     var keysSet = new Set();
     for ( var index in docs){

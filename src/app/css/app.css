@@ -24,8 +24,7 @@ html, body {
 }
 
 .data md-list-item .md-no-style{
-    margin:0px;
-    padding:0px !important;
+    padding:0.1px !important;
 }
 
 .list-container{
